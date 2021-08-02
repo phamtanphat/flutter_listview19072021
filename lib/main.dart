@@ -31,6 +31,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+  int count = 0;
+
   @override
   void initState() {
     super.initState();
@@ -46,7 +48,23 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     print("build");
-    return Container();
+    return Container(
+      child: Center(
+        child: Column(
+          children: [
+            Text(count.toString()),
+            ElevatedButton(
+                onPressed: (){
+                  setState(() {
+                    count = count + 1;
+                  });
+                },
+                child: Text("Increment")
+            )
+          ],
+        ),
+      ),
+    );
   }
 
   @override
