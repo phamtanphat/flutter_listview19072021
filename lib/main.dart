@@ -34,20 +34,7 @@ class _HomePageState extends State<HomePage> {
   int count = 0;
 
   @override
-  void initState() {
-    super.initState();
-    print("initState");
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    print("didChangeDependencies");
-  }
-
-  @override
   Widget build(BuildContext context) {
-    print("build");
     return Container(
       child: Center(
         child: Column(
@@ -60,18 +47,48 @@ class _HomePageState extends State<HomePage> {
                   });
                 },
                 child: Text("Increment")
-            )
+            ),
+            Children()
           ],
         ),
       ),
     );
   }
 
+}
+
+class Children extends StatefulWidget {
+
   @override
-  void didUpdateWidget(covariant HomePage oldWidget) {
+  _ChildrenState createState() => _ChildrenState();
+}
+
+class _ChildrenState extends State<Children> {
+
+  @override
+  void initState() {
+    super.initState();
+    print("Children initState");
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    print("Children didChangeDependencies");
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    print("Children build");
+    return Container();
+  }
+
+  @override
+  void didUpdateWidget(covariant Children oldWidget) {
     super.didUpdateWidget(oldWidget);
-    print("didUpdateWidget");
+    print("Children didUpdateWidget");
   }
 }
+
 
 
