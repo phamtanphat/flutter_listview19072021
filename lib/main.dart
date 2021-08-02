@@ -17,88 +17,43 @@ class MyApp extends StatelessWidget {
             appBar: AppBar(
               title: Text("Demo Context"),
             ),
-            body: Ongba(
-              child: Bame(
-                child: Concai(),
-              ),
-            )
+            body: HomePage()
         ));
   }
 }
 
-class Ongba extends StatefulWidget {
-  late Widget child;
+class HomePage extends StatefulWidget {
 
-  Ongba({required this.child});
-
-  static _OngbaState? of(BuildContext context) =>
-      context.findAncestorStateOfType<_OngbaState>();
 
   @override
-  _OngbaState createState() => _OngbaState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _OngbaState extends State<Ongba> {
+class _HomePageState extends State<HomePage> {
 
-  String name = "Phat";
+  @override
+  void initState() {
+    super.initState();
+    print("initState");
+  }
 
-  int age = 10;
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    print("didChangeDependencies");
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: widget.child,
-    );
+    print("build");
+    return Container();
+  }
+
+  @override
+  void didUpdateWidget(covariant HomePage oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    print("didUpdateWidget");
   }
 }
-
-class Bame extends StatefulWidget {
-  late Widget child;
-
-  Bame({required this.child});
-
-  static _BameState? of(BuildContext context) =>
-      context.findAncestorStateOfType<_BameState>();
-
-  @override
-  _BameState createState() => _BameState();
-}
-
-class _BameState extends State<Bame> {
-
-  String data = "abc";
-
-  @override
-  Widget build(BuildContext context) {
-    String name = Ongba.of(context)!.name;
-    return Container(
-      child: Column(
-        children: [
-          Text(name),
-          widget.child
-        ],
-      ),
-    );
-  }
-}
-
-class Concai extends StatefulWidget {
-  const Concai({Key? key}) : super(key: key);
-
-  @override
-  _ConcaiState createState() => _ConcaiState();
-}
-
-class _ConcaiState extends State<Concai> {
-  @override
-  Widget build(BuildContext context) {
-    int? age = Ongba.of(context)?.age;
-    String? data = Bame.of(context)?.data;
-    return Container(
-      child: Text(" Age ${age} , ${data}"),
-    );
-  }
-}
-
 
 
