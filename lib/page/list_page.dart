@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_listview19072021/model/task.dart';
 
 class ListPage extends StatelessWidget {
   @override
@@ -14,6 +15,14 @@ class ListPageContainer extends StatefulWidget {
 }
 
 class _ListPageContainerState extends State<ListPageContainer> {
+  var listTasks = [];
+
+  @override
+  void initState() {
+    super.initState();
+    listTasks = List.generate(5, (index) => Task(id: index + 1, name: "Task ${index + 1}", description: "Description ${index + 1}"));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,13 +31,18 @@ class _ListPageContainerState extends State<ListPageContainer> {
       ),
       body: Container(
           child: ListView.builder(
-              itemCount: 5,
+              itemCount: listTasks.length,
               itemBuilder: (context ,index){
                   return ListTile(
-                    title: Text("Item $index"),
-                    subtitle: Text("Description "),
+                    onTap: (){
+                      setState(() {
+                        listTasks.remove(listTasks[index]);
+                      });
+                    },
+                    title: Text(listTasks[index].name),
+                    subtitle: Text(listTasks[index].description),
                     leading: Text(index.toString()),
-                    trailing: Icon(Icons.delete),
+                    trailing: Icon(Icons.delete , color: Colors.red),
                   );
               }
           )
