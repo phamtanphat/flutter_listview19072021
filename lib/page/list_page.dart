@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_listview19072021/model/task.dart';
+import 'package:flutter_listview19072021/shared/list_singleton.dart';
 
 class ListPage extends StatelessWidget {
   @override
@@ -15,13 +15,8 @@ class ListPageContainer extends StatefulWidget {
 }
 
 class _ListPageContainerState extends State<ListPageContainer> {
-  var listTasks = [];
 
-  @override
-  void initState() {
-    super.initState();
-    listTasks = List.generate(5, (index) => Task(id: index + 1, name: "Task ${index + 1}", description: "Description ${index + 1}"));
-  }
+  var listTasks = SingletonList().lisTasks;
 
   @override
   Widget build(BuildContext context) {
@@ -35,14 +30,19 @@ class _ListPageContainerState extends State<ListPageContainer> {
               itemBuilder: (context ,index){
                   return ListTile(
                     onTap: (){
-                      setState(() {
-                        listTasks.remove(listTasks[index]);
-                      });
+
                     },
                     title: Text(listTasks[index].name),
                     subtitle: Text(listTasks[index].description),
-                    leading: Text(index.toString()),
-                    trailing: Icon(Icons.delete , color: Colors.red),
+                    leading: Text(listTasks[index].id.toString()),
+                    trailing: InkWell(
+                      onTap: (){
+                        setState(() {
+                          listTasks.remove(listTasks[index]);
+                        });
+                      },
+                        child: Icon(Icons.delete , color: Colors.red)
+                    ),
                   );
               }
           )
