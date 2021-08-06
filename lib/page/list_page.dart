@@ -29,13 +29,7 @@ class _ListPageContainerState extends State<ListPageContainer> {
               MaterialPageRoute(
                 builder: (context){
                   return CreatePage();
-                },
-                settings: RouteSettings(
-                  arguments: {
-                    "string": "Xin chao",
-                    "number" : 123
-                  }
-                )
+                }
               )
             );
         },
