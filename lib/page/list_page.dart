@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_listview19072021/model/task.dart';
 import 'package:flutter_listview19072021/page/create_page.dart';
 import 'package:flutter_listview19072021/shared/list_singleton.dart';
 
@@ -19,6 +20,12 @@ class _ListPageContainerState extends State<ListPageContainer> {
 
   var listTasks = SingletonList().lisTasks;
 
+  void addTask(Task task){
+    setState(() {
+      SingletonList().lisTasks.add(task);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +36,12 @@ class _ListPageContainerState extends State<ListPageContainer> {
               MaterialPageRoute(
                 builder: (context){
                   return CreatePage();
-                }
+                },
+                settings: RouteSettings(
+                  arguments: {
+                    "addTask" : addTask
+                  }
+                )
               )
             );
         },

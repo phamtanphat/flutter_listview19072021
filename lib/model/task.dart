@@ -4,4 +4,9 @@ class Task{
   late String description;
 
   Task({required this.id , required this.name , required this.description});
+
+  @override
+  String toString() {
+    return 'Task{id: $id, name: $name, description: $description}';
+  }
 }
