@@ -27,6 +27,17 @@ class _ListPageContainerState extends State<ListPageContainer> {
     });
   }
 
+  void updateTask(Task task){
+    setState(() {
+      for (var i = 0 ; i < SingletonList().lisTasks.length ; i++){
+        if (SingletonList().lisTasks[i].id == task.id){
+          SingletonList().lisTasks[i] = task;
+          break;
+        }
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,7 +74,13 @@ class _ListPageContainerState extends State<ListPageContainer> {
                           MaterialPageRoute(
                               builder: (context){
                                 return UpdatePage();
-                              }
+                              },
+                              settings: RouteSettings(
+                                  arguments: {
+                                    "updateTask" : updateTask,
+                                    "task" : listTasks[index]
+                                  }
+                              )
                           )
                       );
                     },
