@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_listview19072021/model/task.dart';
 import 'package:flutter_listview19072021/page/create_page.dart';
+import 'package:flutter_listview19072021/page/update_page.dart';
 import 'package:flutter_listview19072021/shared/list_singleton.dart';
 
 class ListPage extends StatelessWidget {
@@ -57,7 +58,14 @@ class _ListPageContainerState extends State<ListPageContainer> {
               itemBuilder: (context ,index){
                   return ListTile(
                     onTap: (){
-
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context){
+                                return UpdatePage();
+                              }
+                          )
+                      );
                     },
                     title: Text(listTasks[index].name),
                     subtitle: Text(listTasks[index].description),

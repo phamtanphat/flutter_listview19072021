@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_listview19072021/page/create_page.dart';
 import 'package:flutter_listview19072021/page/list_page.dart';
+import 'package:flutter_listview19072021/page/update_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,7 +22,10 @@ class MyApp extends StatelessWidget {
           },
           "/create-page" : (context) {
             return CreatePage();
-          }
+          },
+          "/update-page" : (context) {
+            return UpdatePage();
+          },
         },
         initialRoute: "/",
     );
