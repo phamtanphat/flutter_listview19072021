@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_listview19072021/page/create_page.dart';
 import 'package:flutter_listview19072021/shared/list_singleton.dart';
 
 class ListPage extends StatelessWidget {
@@ -21,6 +22,26 @@ class _ListPageContainerState extends State<ListPageContainer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context){
+                  return CreatePage();
+                },
+                settings: RouteSettings(
+                  arguments: {
+                    "string": "Xin chao",
+                    "number" : 123
+                  }
+                )
+              )
+            );
+        },
+        backgroundColor: Colors.teal,
+        child: Icon(Icons.add),
+      ),
       appBar: AppBar(
         title: Text("List Task"),
       ),

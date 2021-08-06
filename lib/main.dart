@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_listview19072021/page/create_page.dart';
 import 'package:flutter_listview19072021/page/list_page.dart';
 
 void main() {
@@ -14,7 +15,15 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: ListPage()
+        routes: {
+          "/" : (context){
+            return ListPage();
+          },
+          "/create-page" : (context) {
+            return CreatePage();
+          }
+        },
+        initialRoute: "/",
     );
   }
 }
